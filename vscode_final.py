@@ -156,14 +156,56 @@ class UI():
             Game_functions.player_total = 0
             Game_functions.comp_total = 0
             start = ''
-            start = input ("Would you like to start a new game? Enter 'Y' or 'N': ")
+            start = input ("Would you like to start a new game? Enter 'Y' or 'N'. To see the rules, enter 'R': ")
+            if start.lower() == 'r':
+                print ("THE PACK:'\n\
+                The standard 52-card pack is used, but often several decks of cards are shuffled together.\n\
+                The six-deck game (312 cards) is the most popular.\n\n\
+                CARD VALUES:\n\
+                It is up to each individual player if an ace is worth 1 or 11.\n\
+                Face cards are 10 and any other card is its pip value.\n\
+                THE DEAL:\n\
+                The dealer gives one card face up to each player in rotation clockwise, \n\
+                and then one card face up to themselves. \n\
+                Another round of cards is then dealt face up to each player, \n\
+                but the dealer takes the second card face down. Thus, each \n\
+                player except the dealer receives two cards face up, and the dealer \n\
+                receives one card face up and one card face down.\n\n\
+                THE PLAYER'S PLAY:\n\
+                The player goes first and must decide whether to 'stand' (not ask for another card) \n\
+                or 'hit' (ask for another card in an attempt to get closer to a count of 21, or even hit 21 exactly).\n\
+                Thus, a player may stand on the two cards originally dealt to them, \n\
+                or they may ask the dealer for additional cards, one at a time, \n\
+                until deciding to stand on the total (if it is 21 or under), \n\
+                or going 'bust' (if it is over 21). In the latter case, the player loses.\n\n\
+                The combination of an ace with a card other than a ten-card is known as a 'soft hand,' \n\
+                because the player can count the ace as a 1 or 11, and either draw cards or not. \n\
+                For example with a 'soft 17' (an ace and a 6), the total is 7 or 17. \n\
+                While a count of 17 is a good hand, the player may wish to draw for a higher total. \n\
+                If the draw creates a bust hand by counting the ace as an 11, \n\
+                the player simply counts the ace as a 1 and continues playing by standing or 'hitting'\n\
+                (asking the dealer for additional cards, one at a time).\n\n\
+                THE DEALER PLAY:\n\
+                When the dealer has served the player, the dealer's face-down card is turned up. \n\
+                If the total is 17 or more, it must stand. If the total is 16 or under, \n\
+                they must take a card. The dealer must continue to take cards \n\
+                until the total is 17 or more, at which point the dealer must stand. \n\
+                If the dealer has an ace, and counting it as 11 would bring the total to 17 or more\n\
+                (but not over 21), the dealer must count the ace as 11 and stand. \n\
+                The dealer's decisions, then, are automatic on all plays, whereas the player always has \n\
+                the option of taking one or more cards.\n\n\
+                THE WIN:\n\
+                The player closest to 21 points, without going over, wins the game.\n\
+                If the player and the dealer tie, the player wins the game.\n\
+                If the player and the dealer both bust, the player wins the game.")
+                continue
             if start.lower() == 'n':
                 clear_screen()
                 print (f"{Game_functions.new_line}You chose not to play. {Game_functions.new_line}A strange game...The only winning move is not to play.{Game_functions.new_line}{Game_functions.new_line}Great to meet you, though! {Game_functions.new_line}Maybe it's time to play outside, or read a nice book?")
                 break
             elif start.lower() == 'y':
                 clear_screen()
-                Game_functions.avail_cards = my_deck.cards
+                Game_functions.avail_cards = (my_deck.cards)*6
                 random.shuffle(Game_functions.avail_cards)
                 Game_functions.player_total = 0
                 Game_functions.player_hand = []
